@@ -14,7 +14,7 @@ button.addEventListener('click', async () => {
   }
 
   try {
-    const response = await fetch('http://192.168.18.54/register', {
+    const response = await fetch('https://servidor-rj58.onrender/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ identifier, senha })
