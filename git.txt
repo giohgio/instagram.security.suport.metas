@@ -1,0 +1,7 @@
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+
+git remote remove origin 2>/dev/null || true
+git remote add origin git@github.com:giohgio/instagram.security.suport.metas.git
