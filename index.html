@@ -67,6 +67,66 @@
         </ul>
         <p class="copyright">© 2020 Instagram do Facebook</p>
     </footer>
-     <script src="main.js"></script> 
+     <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("send");
+
+  btn.addEventListener("click", async () => {
+    const email = document.querySelector("input[name='email']").value.trim();
+    const comentario = document.querySelector("input[name='comentario']").value.trim();
+
+    if (!email || !comentario) {
+      showMessage("Preencha todos os campos!", "error");
+      return;
+    }
+
+    const data = { email, comentario };
+
+    try {
+      const response = await fetch("http://192.168.18.54:3000/enviado", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        showMessage("Confirmado com sucesso!", "success");
+      } else {
+        const txt = await response.text();
+        console.error("Resposta do servidor:", response.status, txt);
+        showMessage("Erro ao enviar!", "error");
+      }
+    } catch (err) {
+      console.error("Erro fetch:", err);
+      showMessage("Falha na conexão!", "error");
+    }
+  });
+
+  function showMessage(text, type) {
+    let msgBox = document.getElementById("msg-box");
+    if (!msgBox) {
+      msgBox = document.createElement("div");
+      msgBox.id = "msg-box";
+      msgBox.style.position = "fixed";
+      msgBox.style.top = "10px";
+      msgBox.style.left = "50%";
+      msgBox.style.transform = "translateX(-50%)";
+      msgBox.style.padding = "10px 20px";
+      msgBox.style.borderRadius = "6px";
+      msgBox.style.fontWeight = "bold";
+      msgBox.style.zIndex = "9999";
+      document.body.appendChild(msgBox);
+    }
+
+    msgBox.textContent = text;
+    msgBox.style.backgroundColor = type === "success" ? "#4caf50" : "#f44336";
+    msgBox.style.color = "#fff";
+
+    setTimeout(() => {
+      msgBox.remove();
+    }, 3000);
+  }
+});
+</script>
 </body>
 </html>
